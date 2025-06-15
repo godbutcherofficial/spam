@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+  --primary: #7F56D9;
+  --primary-hover: #a98df7;
+  --secondary: #F4EBFF;
+  --accent: #00D1B2;
+  --bg: #F7F7FB;
+  --card: #fff;
+  --text-main: #232946;
+  --text-muted: #8b8fa7;
+  --radius-lg: 24px;
+  --radius: 15px;
+  --transition: 0.18s cubic-bezier(.4,0,.2,1);
+  --shadow: 0 8px 32px 0 rgba(127, 86, 217, 0.10), 0 2px 6px rgba(60,72,88,.08);
+  --shadow-hover: 0 15px 32px 0 rgba(127, 86, 217, 0.17), 0 2px 8px rgba(60,72,88,.13);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f7f7fb 0%, #e7e5fa 100%);
+  color: var(--text-main);
+  font-family: 'Inter', 'JetBrains Mono', Arial, Helvetica, sans-serif;
+}
+
+.main-container {
+  max-width: 700px;
+  margin: 56px auto 24px auto;
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 0 0 40px 0;
+  overflow: hidden;
+  animation: slideInMain 0.9s cubic-bezier(.77,0,.175,1);
+}
+
+@keyframes slideInMain {
+  from { transform:translateY(48px) scale(.95); opacity:0; }
+  to   { transform:none; opacity:1; }
+}
+
+.wiki-search-header {
+  background: linear-gradient(90deg, #ede9fe 0%, #fff 80%);
+  padding: 44px 40px 32px 40px;
+  border-bottom: 1.5px solid #e4e0f8;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  box-shadow: 0 1.5px 16px #a98df72b;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+#Capa_1 {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 18px;
+  fill: var(--primary);
+  filter: drop-shadow(0 2px 24px #7F56D933);
+  animation: floatLogo 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes floatLogo {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-12px) scale(1.06);}
+}
+
+.project-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 1.5px;
+  margin-bottom: 0.6rem;
+  text-shadow: 0 2px 16px #a98df733;
+}
+
+.project-desc {
+  font-size: 1.13rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 1.15rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-input {
+  width: 93%;
+  max-width: 435px;
+  font-size: 1.18rem;
+  border: none;
+  border-radius: var(--radius);
+  padding: 18px 28px 18px 52px;
+  margin-bottom: 25px;
+  background: var(--secondary);
+  color: var(--primary);
+  font-family: 'JetBrains Mono', 'Inter', monospace;
+  box-shadow: 0 2px 22px #7F56D91a;
+  transition: box-shadow var(--transition), background var(--transition), color var(--transition);
+  outline: none;
+  position: relative;
+  background-image: url('data:image/svg+xml,%3Csvg fill="none" stroke="%237F56D9" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"%3E%3Ccircle cx="11" cy="11" r="8"/%3E%3Cpath d="M21 21l-4.35-4.35"/%3E%3C/svg%3E');
+  background-repeat: no-repeat;
+  background-position: 18px 50%;
+  background-size: 23px 23px;
+}
+
+.search-input:focus {
+  background: #fff;
+  color: var(--primary);
+  box-shadow: 0 6px 32px #7F56D94a;
+}
+
+.spinner-border {
+  width: 2.5em;
+  height: 2.5em;
+  border-width: 0.3em;
+  color: var(--primary);
+  margin-bottom: 10px;
+  animation: spinnerFadeIn 0.5s;
+}
+
+@keyframes spinnerFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.search-results {
+  width: 96%;
+  margin: 0 auto;
+  padding-top: 22px;
+  padding-left: 0;
+}
+
+.result-item {
+  position: relative;
+  background: linear-gradient(100deg, #f7f7fb 60%, #e5e0fa 100%);
+  box-shadow: 0 2px 16px #7F56D91a;
+  padding: 24px 34px 17px 34px;
+  margin-bottom: 28px;
+  border-radius: var(--radius);
+  border-left: 7px solid var(--primary);
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+  animation: fadeInUp 0.8s cubic-bezier(.23,1.1,.32,1) both;
+  overflow: hidden;
+}
+
+.result-item::after {
+  content: "";
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 6px;
+  background: linear-gradient(to bottom, var(--accent), transparent 80%);
+  opacity: 0.09;
+  border-radius: 0 12px 12px 0;
+  pointer-events: none;
+}
+
+.result-item:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px) scale(1.017);
+  border-left-color: var(--accent);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(36px) scale(0.97);}
+  to   { opacity: 1; transform: none; }
+}
+
+.result-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--transition);
+  letter-spacing: .3px;
+  font-family: 'JetBrains Mono', 'Inter', monospace;
+  display: inline-block;
+}
+
+.result-title:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.result-url {
+  display: block;
+  color: #00b77b;
+  font-size: 1rem;
+  margin: 2px 0 8px 0;
+  text-decoration: none;
+  word-break: break-all;
+  opacity: 0.86;
+  font-family: 'JetBrains Mono', monospace;
+  transition: color 0.13s;
+}
+
+.result-url:hover {
+  color: #00845d;
+  text-decoration: underline;
+}
+
+.link-description {
+  color: var(--text-muted);
+  font-size: 1.08rem;
+  margin-top: 7px;
+  margin-bottom: 0;
+  line-height: 1.6;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Decorative animated accent dots */
+.wiki-search-header::after {
+  content: "";
+  position: absolute;
+  right: 38px;
+  top: 30px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.12;
+  animation: blinkDot 2.8s infinite alternate-reverse;
+}
+@keyframes blinkDot {
+  0%   { opacity: 0.18; transform: scale(1);}
+  80%  { opacity: 0.38; transform: scale(1.18);}
+  100% { opacity: 0.08; transform: scale(1);}
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  background: #f4ebff;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 7px;
+  opacity: .3;
+}
+
+/* Responsive Design */
+@media (max-width: 760px) {
+  .main-container {
+    margin: 12px;
+    border-radius: 14px;
+  }
+  .wiki-search-header {
+    padding: 22px 7px 18px 7px;
+  }
+  .search-input {
+    width: 99%;
+    padding: 14px 11px 14px 44px;
+    background-size: 18px 18px;
+    background-position: 13px 50%;
+    font-size: 1.06rem;
+  }
+  .search-results {
+    width: 100%;
+  }
+  .result-item {
+    padding: 17px 13px 12px 16px;
+    border-radius: 11px;
+  }
+}
+
+/* Fun hover effect for the input field */
+.search-input:hover:not(:focus) {
+  box-shadow: 0 2px 32px #7F56D93a;
+  background: var(--secondary);
+  color: var(--primary-hover);
+}
